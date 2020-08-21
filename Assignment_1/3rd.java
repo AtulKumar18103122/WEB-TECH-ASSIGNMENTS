@@ -88,7 +88,7 @@ public class Main {
             System.out.println("Negative cycle exist");
         else if(d[dis] != Double.POSITIVE_INFINITY) {
 
-            System.out.println("\nPath from scr to dis : ");
+            System.out.println("\nMinimum cost path from scr to dis : ");
             Stack stack = new Stack();
             int i = dis;
             while(parent[i]!=-1)
@@ -100,7 +100,7 @@ public class Main {
             while(stack.size()>0){
                 System.out.print(stack.pop() + " ");
             }
-            System.out.println("\nhaving cost "+ d[dis] +"\n\n");
+            System.out.println("\nhave cost "+ d[dis] +"\n\n");
 
             System.out.println("All path from src to dis : ");
             ArrayList<Integer> temp = new ArrayList<Integer>();
