@@ -37,9 +37,10 @@ class Main {
             int cost = helper(crops, x+1,y) + helper(crops, x, y+1);
             return cost;
         }
-        crops[x].setCharAt(y,'*');
+
         if((x+1 < crops.length && crops[x].charAt(y) == crops[x+1].charAt(y)) && (y+1 < crops[0].length() && crops[x].charAt(y) == crops[x].charAt(y+1)) )
         {
+            crops[x].setCharAt(y,'*');
             int cost = 1 + helper(crops, x+1,y) + helper(crops, x, y+1);
             char a = crops[x+1].charAt(y);
             char b = crops[x].charAt(y+1);
@@ -51,6 +52,7 @@ class Main {
             return Math.min(cost2, cost);
         }
         if(x+1< crops.length && crops[x].charAt(y) == crops[x+1].charAt(y)){
+            crops[x].setCharAt(y,'*');
             char a = crops[x+1].charAt(y);
             crops[x+1].setCharAt(y,'*');
             int ans = 1 + helper(crops, x+1,y) + helper(crops, x, y+1);
@@ -58,12 +60,14 @@ class Main {
             return ans;
         }
         if(y+1< crops[0].length() && crops[x].charAt(y) == crops[x].charAt(y+1)){
+            crops[x].setCharAt(y,'*');
             char a = crops[x].charAt(y+1);
             crops[x].setCharAt(y+1,'*');
             int ans = 1 + helper(crops, x+1,y) + helper(crops, x, y+1);
             crops[x].setCharAt(y+1,a);
             return ans;
         }
+        crops[x].setCharAt(y,'*');
         return helper(crops, x+1,y) + helper(crops, x, y+1);
     }
 }
