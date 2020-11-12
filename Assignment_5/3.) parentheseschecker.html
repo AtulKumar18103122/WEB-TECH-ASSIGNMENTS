@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style> 
+input[type=text] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+</style>
+</head>
+<body>
+
+<form name="myform" >
+  <label for="string">Input String</label>
+  <input type="text" id="string" name="string" placeholder="string like {[]()}">
+  <button onclick="validateparentheses();"> Check </button>
+</form>
+<div id="ans" > </div>
+</body>
+</html>
+
+<script>
+function validateparentheses() {
+  s = document.myform.string.value; 
+  if(helper(s)) {
+  	alert(s + " is " + " Balanced");
+  }
+  else {
+  	alert(s + " is NOT " + " Balanced");
+  }
+}
+function helper(s) {
+	const obj = {
+    "(": ")",
+    "{": "}",
+    "[": "]",
+  }
+
+  const stack = [];
+
+  for (const paran of s) {
+    if (obj.hasOwnProperty(paran)) {
+      stack.push(paran)
+    } else {
+      const closeParan = stack.pop();
+      if (paran !== obj[closeParan]) {
+        return false;
+      }
+    }
+  }
+
+  return stack.length === 0;
+}
+</script>
+</html>
+
